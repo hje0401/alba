@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="StockMgt">
+
+	<select id="StockMgtListCnt" parameterType="SearchVO" resultType="int">
+        SELECT
+        	count(*)
+        FROM stock
+        WHERE
+        	1=1
+        	<if test="prodName != null and prodName != ''">
+	        	AND prodName like CONCAT('%',#{prodName},'%')
+        	</if>
+        	<if test="prodCategory != null and prodCategory != ''">
+	        	AND prodCategory = #{prodCategory}
+        	</if>
+    </select>
+    
+	<select id="StockMgtList" parameterType="SearchVO" resultType="StockMgtVO">
+		SELECT
+			A.*
+		FROM(
+	        SELECT
+	        	@ROWNUM := @ROWNUM + 1 AS no
+	        	,prodCode AS prodCode
+	        	,prodName AS prodName
+	        	,prodCategory AS prodCategory
+	        	,stockCnt AS stockCnt
+	        	,originPrice AS originPrice
+	        	,salePrice AS salePrice
+	        	,regDate AS regDate
+	        	,regId AS regId
+	        	,uptDate AS uptDate
+	        	,uptId AS uptId
+	        FROM stock, (SELECT @ROWNUM := 0) R
+	        WHERE
+	        	1=1
+	        	<if test="prodName != null and prodName != ''">
+		        	AND prodName like CONCAT('%',#{prodName},'%')
+		        	
+	        	</if>
+	        	<if test="prodCategory != null and prodCategory != ''">
+		        	AND prodCategory = #{prodCategory}
+		        </if>
+		) A
+		<![CDATA[
+		WHERE A.no >= ((#{pageNo}-1)*10 + 1) AND A.no <= ((#{pageNo}-1)*10 + 10)
+		]]>
+    </select>
+</mapper>

@@ -10,7 +10,10 @@
         <!-- common -->
         <typeAlias type="stockmgmt.login.model.LoginVO" alias="LoginVO" />
         <typeAlias type="stockmgmt.stock.model.StockVO" alias="StockVO" />
+        <typeAlias type="stockmgmt.stockMgt.model.StockMgtVO" alias="StockMgtVO" />
         <typeAlias type="stockmgmt.common.model.SearchVO" alias="SearchVO" />
+        
+        
     </typeAliases>
 
 </configuration>

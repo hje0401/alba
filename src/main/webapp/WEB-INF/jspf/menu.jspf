@@ -26,7 +26,7 @@
                 <li>
                     <a href="stockList.do"><i class="fa fa-dashboard fa-fw"></i> 재고현황</a>
                     <a href="inoutState.do"><i class="fa fa-dashboard fa-fw"></i> 입/출고 현황</a>
-                    <a href="index.html"><i class="fa fa-dashboard fa-fw"></i> 재고관리</a>
+                    <a href="stockMgtList.do"><i class="fa fa-dashboard fa-fw"></i> 재고관리</a>
                     <a href="index.html"><i class="fa fa-dashboard fa-fw"></i> 직원관리</a>
                 </li>
             </ul>

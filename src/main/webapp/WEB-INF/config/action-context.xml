@@ -47,4 +47,6 @@
     <bean id="loginDao" class="stockmgmt.login.dao.LoginDAO" />
     <bean id="stockService" class="stockmgmt.stock.service.StockService" />
     <bean id="stockDao" class="stockmgmt.stock.dao.StockDAO" />
+    <bean id="stockMgtService" class="stockmgmt.stockMgt.service.StockMgtService" />
+    <bean id="stockMgtDAO" class="stockmgmt.stockMgt.dao.StockMgtDAO" />
 </beans>
