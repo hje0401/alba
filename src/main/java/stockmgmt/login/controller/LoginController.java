@@ -60,7 +60,7 @@ public class LoginController extends UtilController{
 
 			resultVo.setResult(true);
 		}else {
-			resultVo.setErrorMessage("아이디 또는 비밀번호를 확인해 주세요.");
+			resultVo.setErrorMessage("아이디 또는 비밀번호를 확인해 주세요....");
 		}
 		printResultLog(resultVo);
 		return resultVo;
