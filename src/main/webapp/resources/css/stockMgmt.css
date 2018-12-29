@@ -1,0 +1,16 @@
+@charset "UTF-8";
+
+.alert-info {display:inline-block;} 
+.alert-info.prodModyBox {margin-right:5px;} 
+.alert-info.prodModyBox .prodNm {padding-right:10px;} 
+
+<!-- 입고/출고 팝업 -->
+.prodModifyWrap {padding-bottom:20px;}
+.prodModifyWrap .form-group.input-group {width:100%; padding-bottom:10px;}
+.prodModifyWrap .form-group.input-group .prodName{width:20%;}
+.prodModifyWrap .form-group .form-control {width:80%;}
+.prodModifyWrap .close {float:initial; line-height:inherit; opacity:initial; color:#ff0101; font-size:24px; width:50px;}
+.btnArea_center {text-align:center;}
+.btnArea_center .btn{width:200px;}
+.table {margin-bottom:0;} 
+

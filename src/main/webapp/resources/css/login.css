@@ -1,0 +1,14 @@
+@charset "UTF-8";
+
+.contentsWrap {width:100%; height:100%;}
+
+.loginWrap {width:100%; position:relative; top:50%; transform:translateY(-50%); -webkit-transform:translateY(-50%);}
+.loginWrap .logoWrap {display:inline-block; width:30%; text-align:center;}
+.loginWrap .logoWrap .logo { display:inline-block; width:100%; height:100px; background:url('../images/logo.jpg') no-repeat center; background-size:100px 100px; text-indent:-99999px;}
+
+.loginWrap .loginForm {display:inline-block; width:65%; height:100%;  background:#F6F7FA;}
+.loginWrap .loginForm .loginArea {display:inline-block; width:100%; height:100%; padding:20px;}
+.loginWrap .loginForm .loginArea lebel {display:inline-block; width:100%;}
+.loginWrap .loginForm .loginArea .infoText {display:inline-block; width:100%; color:#9E9FA0; font-size:0.95rem;}
+.loginWrap .loginForm .loginArea input {width:280px; margin:5px 0 10px 0;}
+.loginWrap .loginForm .loginArea .btn {display:block; width:180px; margin:20px 0 0 0;}

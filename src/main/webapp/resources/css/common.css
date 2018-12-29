@@ -1,0 +1,30 @@
+@charset "UTF-8";
+
+@import url('bootstrap.min.css');
+@import url('metisMenu.min.css');
+@import url('sb-admin-2.min.css');
+@import url('font-awesome.min.css');
+
+.contentsWrap {padding:10px; background-color:#fff;}
+.hide {display:none !important;}
+.w45 { display:inline-block; width:45% !important;}
+.w100 { display:inline-block; width:100% !important;}
+
+.navbar-top-links li span {position:relative; display:block; min-height:50px; padding:15px;}
+
+.col-sm-6 {width:100%;}
+.col-sm-6 .paging_simple_numbers {text-align:right;}
+
+.form-group {overflow:hidden; margin-bottom:0;}
+.form-group label {width:50%; float:left;}
+.form-group label span{display:inline-block; width:50px; padding-right:5px;}
+.form-group .form-control {display:inline-block; width:80%;}
+
+.btnArea {overflow:hidden;}
+.btnArea .btn {float:right; margin:5px;}
+.btnArea .btn:last-child {margin-right:0;}
+
+.required {color:#ff0000;}
+@media (max-width:720px){
+	.form-group label {width:100%;}
+}
