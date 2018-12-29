@@ -23,7 +23,7 @@
 			pageNo = $(this).attr("pageNo");
 			$(".btnPage.active").removeClass("active");
 			$(".btnPage[pageNo = '"+pageNo+"']").addClass("active");
-			reqStockList();
+			reqList();
 		});
 		
 		//페이징 이전
@@ -35,7 +35,7 @@
 			pageNo = prevPage;
 			$(".btnPage.active").removeClass("active");
 			$(".btnPage[pageNo = '"+pageNo+"']").addClass("active");
-			reqStockList();
+			reqList();
 		});
 		
 		//페이징 다음
@@ -47,7 +47,7 @@
 			pageNo = nextPage;
 			$(".btnPage.active").removeClass("active");
 			$(".btnPage[pageNo = '"+pageNo+"']").addClass("active");
-			reqStockList();
+			reqList();
 		});
 	});
 })(jQuery, undefined);
