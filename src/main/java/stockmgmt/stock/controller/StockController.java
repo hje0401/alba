@@ -8,6 +8,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -30,7 +31,7 @@ public class StockController extends UtilController{
 	private IStockService stockService;
 	
 	@RequestMapping(value="/stockList.do")
-	public ModelAndView stockList() throws Exception{
+	public ModelAndView stockList(){
 		LoginVO session = (LoginVO) RequestContextHolder.currentRequestAttributes().getAttribute("loginInfo", RequestAttributes.SCOPE_SESSION);
 		ModelAndView mv = new ModelAndView("stock/stockList");
 		mv.addObject("session", session);
@@ -40,7 +41,7 @@ public class StockController extends UtilController{
 	
 	@RequestMapping(value="/reqStockList.do", method = RequestMethod.POST)
 	@ResponseBody
-	public ResultVO reqStockList(SearchVO searchVo) {
+	public ResultVO reqStockList(@RequestBody SearchVO searchVo){
 		int stockCnt = stockService.reqStockListCnt(searchVo);
 		List<StockVO> stockList = stockService.reqStockList(searchVo);
 		
@@ -48,7 +49,7 @@ public class StockController extends UtilController{
 		body.put("totalCnt", stockCnt);
 		body.put("list", stockList);
 		
-		ResultVO resultVo = new ResultVO();
+		ResultVO<JSONObject> resultVo = new ResultVO<JSONObject>();
 		resultVo.setResult(true);
 		resultVo.setBody(body);
 		
@@ -58,7 +59,7 @@ public class StockController extends UtilController{
 	}
 	
 	@RequestMapping(value="/popupModifyProd.do", method = RequestMethod.POST)
-	public ModelAndView popupModifyProd(StockVO stockVo) throws Exception{
+	public ModelAndView popupModifyProd(StockVO stockVo){
 		ModelAndView mv = new ModelAndView("stock/popupModifyProd");
 		
 		List<StockVO> modyStockList = stockService.reqModyStockList(stockVo);

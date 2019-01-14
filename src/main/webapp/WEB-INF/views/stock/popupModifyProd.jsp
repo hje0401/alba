@@ -26,7 +26,7 @@
           
           <div class="prodModifyWrap">
           		<c:forEach var="item" items="${modyStockList}" varStatus="status">
-          			  <div class="form-group input-group record">
+          			  <div class="form-group input-group record" prodCode=${item.prodCode}>
 			              <span class="input-group-addon prodName">${item.prodName}</span>
 			              <input type="number" class="form-control prodCnt" placeholder="개수를 입력하세요.">
 			              <button type="button" class="close btnRemove">×</button>
@@ -42,14 +42,13 @@
 			          <table class="table table-striped table-bordered">
 			             <thead>
 			                 <tr>
-			                     <th><span class="required">*</span>출고자명</th>
 			                     <th><span class="required">*</span>출고사유</th>
 			                     <th>비고</th>
 			                 </tr>
 			             </thead>
 			             <tbody>
 			                 <tr>
-			                     <td><input class="form-control" id="inpUserName" placeholder="출고자명을 입력하세요."></td>
+<!-- 			                     <td><input class="form-control" id="inpUserName" placeholder="출고자명을 입력하세요."></td> -->
 			                     <td><input class="form-control" id="inpReason" placeholder="출고사유를 입력하세요."></td>
 			                     <td><input class="form-control" id="inpEtc"placeholder="비고를 입력하세요."></td>
 			                 </tr>

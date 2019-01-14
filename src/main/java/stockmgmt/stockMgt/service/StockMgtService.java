@@ -14,11 +14,11 @@ public class StockMgtService implements IStockMgtService{
 	@Autowired
 	private IStockMgtDAO IStockMgtDAO;
 	
-	public int StockMgtListCnt(SearchVO searchVo) {
+	public int StockMgtListCnt(SearchVO searchVo){
 		return IStockMgtDAO.StockMgtListCnt(searchVo);
 	}
 	
-	public List<StockMgtVO> StockMgtList(SearchVO searchVo) {
+	public List<StockMgtVO> StockMgtList(SearchVO searchVo){
 		return IStockMgtDAO.StockMgtList(searchVo);
 	}
 	

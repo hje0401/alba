@@ -38,7 +38,6 @@
 	        	1=1
 	        	<if test="prodName != null and prodName != ''">
 		        	AND prodName like CONCAT('%',#{prodName},'%')
-		        	
 	        	</if>
 	        	<if test="prodCategory != null and prodCategory != ''">
 		        	AND prodCategory = #{prodCategory}

@@ -4,11 +4,13 @@ package stockmgmt.login.controller;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletResponse;
 
+import org.json.simple.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.CookieValue;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -39,8 +41,8 @@ public class LoginController extends UtilController{
 	
 	@RequestMapping(value="/reqLogin.do", method = RequestMethod.POST)
 	@ResponseBody
-	public ResultVO reqLogin(LoginVO loginVo, HttpServletResponse response) throws Exception{
-		ResultVO resultVo = new ResultVO(false);
+	public ResultVO reqLogin(@RequestBody LoginVO loginVo, HttpServletResponse response){
+		ResultVO<JSONObject> resultVo = new ResultVO<JSONObject>(false);
 		
 		int userInfoCnt = loginService.reqUserInfoCnt(loginVo);
 		

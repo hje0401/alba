@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+	
+	<!-- Root Context: defines shared resources visible to all other web components -->
+    <bean id="loginService" class="stockmgmt.login.service.LoginService" />
+    <bean id="stockService" class="stockmgmt.stock.service.StockService" />
+    <bean id="stockMgtService" class="stockmgmt.stockMgt.service.StockMgtService" />
+    <bean id="stockHistoryService" class="stockmgmt.stockhistory.service.StockHistoryService" />
+    
+		
+</beans>

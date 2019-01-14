@@ -15,15 +15,15 @@ public class StockService implements IStockService{
 	@Autowired
 	private IStockDAO stockDao;
 	
-	public int reqStockListCnt(SearchVO searchVo) {
+	public int reqStockListCnt(SearchVO searchVo){
 		return stockDao.reqStockListCnt(searchVo);
 	}
 	
-	public List<StockVO> reqStockList(SearchVO searchVo) {
+	public List<StockVO> reqStockList(SearchVO searchVo){
 		return stockDao.reqStockList(searchVo);
 	}
 	
-	public List<StockVO> reqModyStockList(StockVO stockVo) {
+	public List<StockVO> reqModyStockList(StockVO stockVo){
 		return stockDao.reqModyStockList(stockVo);
 	}
 	

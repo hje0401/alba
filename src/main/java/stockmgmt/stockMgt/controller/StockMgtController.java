@@ -30,7 +30,7 @@ public class StockMgtController extends UtilController{
 	private IStockMgtService stockMgtService;
 	
 	@RequestMapping(value="/stockMgtList.do")
-	public ModelAndView stockList() throws Exception{
+	public ModelAndView stockList(){
 		LoginVO session = (LoginVO) RequestContextHolder.currentRequestAttributes().getAttribute("loginInfo", RequestAttributes.SCOPE_SESSION);
 		ModelAndView mv = new ModelAndView("stockMgt/stockMgt");
 		mv.addObject("session", session);
@@ -40,7 +40,7 @@ public class StockMgtController extends UtilController{
 	
 	@RequestMapping(value="/StockSearchList.do", method = RequestMethod.POST)
 	@ResponseBody
-	public ResultVO StockSearchList(SearchVO searchVo) {
+	public ResultVO StockSearchList(SearchVO searchVo){
 		int stockMgtCnt = stockMgtService.StockMgtListCnt(searchVo);
 		List<StockMgtVO> stockMgtList = stockMgtService.StockMgtList(searchVo);
 		

@@ -1,24 +1,27 @@
 package stockmgmt.login.dao;
 
-import stockmgmt.login.model.LoginVO;
-
-import org.mybatis.spring.SqlSessionTemplate;
+import org.mybatis.spring.SqlSessionFactoryBean;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Repository;
 
+import stockmgmt.common.dao.CommonDAO;
+import stockmgmt.login.model.LoginVO;
+
 @Repository
-public class LoginDAO implements ILoginDAO{
+public class LoginDAO extends CommonDAO implements ILoginDAO{
 	
+//	@Autowired
+//    private SqlSessionTemplate sqlSession;
 	@Autowired
-    private SqlSessionTemplate sqlSession;
+    @Qualifier("sqlSessionTemplate")
+    private SqlSessionFactoryBean sqlSessionTemplate;
 
-
-	public int reqUserInfoCnt(LoginVO loginVo) {
-		return sqlSession.selectOne("Login.reqUserInfoCnt",loginVo);
+	public int reqUserInfoCnt(LoginVO loginVo){
+		return getSqlSession().selectOne("Login.reqUserInfoCnt",loginVo);
 	}
 	
-	public LoginVO reqLogin(LoginVO loginVo) {
-		LoginVO test = sqlSession.selectOne("Login.reqLogin",loginVo); 
-		return test;
+	public LoginVO reqLogin(LoginVO loginVo){
+		return getSqlSession().selectOne("Login.reqLogin",loginVo);
 	}
 }

@@ -2,7 +2,7 @@ package stockmgmt.common.model;
 
 import org.json.simple.JSONObject;
 
-public class ResultVO {
+public class ResultVO<T> {
 	/** 결과코드 */
     private Boolean result = false;
 
@@ -12,7 +12,7 @@ public class ResultVO {
     /** 오류메세지 */
     private String errorMessage;
     
-    private JSONObject body = new JSONObject();
+    private T body;
 
     public ResultVO() {
     }
@@ -50,22 +50,21 @@ public class ResultVO {
         this.errorMessage = errorMessage;
     }
     
-    public JSONObject getBody() {
+    
+
+	public T getBody() {
 		return body;
 	}
 
-	public void setBody(JSONObject body) {
+	public void setBody(T body) {
 		this.body = body;
 	}
 
+	@Override
 	public String toString() {
-        StringBuffer objectValue = new StringBuffer();
+		return "ResultVO [result=" + result + ", errorCode=" + errorCode + ", errorMessage=" + errorMessage + ", body="
+				+ body + "]";
+	}
 
-        objectValue.append("result=").append(this.result)
-            .append(", errorCode=").append(this.errorCode)
-            .append(", errorMessage=").append(this.errorMessage)
-            .append(", body=").append(this.body.toString());
 
-        return objectValue.toString();
-    }
 }

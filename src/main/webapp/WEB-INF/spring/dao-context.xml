@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans 
+	xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+        http://www.springframework.org/schema/aop/spring-aop.xsd
+        http://mybatis.org/schema/mybatis-spring
+        http://www.springframework.org/schema/tx 
+        http://www.springframework.org/schema/tx/spring-tx-4.3.xsd
+        http://www.springframework.org/schema/aop
+		http://www.springframework.org/schema/aop/spring-aop.xsd">
+        
+        
+        
+    <bean id="stockDataSource" class="org.springframework.jndi.JndiObjectFactoryBean">
+      <property name="jndiName" value="jdbc/stockMgmt"/>
+      <property name="resourceRef"  value="true" />
+    </bean>
+    
+<!--     <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager"> -->
+<!-- 		<property name="dataSource" ref=stockDataSource></property> -->
+<!-- 	</bean> -->
+	
+<!-- 	<tx:annotation-driven/> -->
+	
+   <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+      <property name="dataSource" ref="stockDataSource"/>
+    </bean>
+    
+    <aop:config proxy-target-class="true">
+	    <aop:pointcut id="serviceOperation" expression="execution(public * stockmgmt.stockhistory.service.*Service.*(..))" />
+	    <aop:advisor id="transactionAdvisor" pointcut-ref="serviceOperation" advice-ref="txAdvice"/>
+	</aop:config>
+	
+    <tx:advice id="txAdvice" transaction-manager="transactionManager">
+        <tx:attributes>
+            <tx:method name="select*" read-only="true" />
+            <tx:method name="list*" read-only="true" />
+            <tx:method name="retrieve*" read-only="true" />
+            <tx:method name="get*" read-only="true" />
+            <tx:method name="find*" read-only="true" />
+            <tx:method name="view*" read-only="true" />
+            <tx:method name="*Move" read-only="true" />
+            <tx:method name="insert*" propagation="REQUIRED" />
+            <tx:method name="update*" propagation="REQUIRED" />
+            <tx:method name="delete*" propagation="REQUIRED"/>
+            <tx:method name="save*" propagation="REQUIRED"/>
+            <tx:method name="create*" propagation="REQUIRED"/>
+            <tx:method name="merge*" propagation="REQUIRED"/>
+            <tx:method name="execute*" propagation="REQUIRED"/>
+            <tx:method name="excel*" propagation="REQUIRED"/>
+            <tx:method name="CALL" propagation="REQUIRED"/>
+            <tx:method name="*" rollback-for="Exception"/>
+        </tx:attributes>
+    </tx:advice>
+    
+    <tx:annotation-driven transaction-manager="transactionManager" proxy-target-class="true"/>
+    
+
+    <bean id="sqlSessionTemplate" class="org.mybatis.spring.SqlSessionFactoryBean">
+        <property name="configLocation" value="classpath:/config/mybatis/sqlConfig.xml" />
+        <property name="dataSource" ref="stockDataSource" />
+        <property name="mapperLocations" value="classpath:/mapper/**/*Mapper.xml" />
+    </bean>
+    
+    <bean id="loginDao" class="stockmgmt.login.dao.LoginDAO">
+    	<property name="sqlSessionFactory" ref="sqlSessionTemplate" />
+    </bean>
+    <bean id="stockDao" class="stockmgmt.stock.dao.StockDAO">
+    	<property name="sqlSessionFactory" ref="sqlSessionTemplate" />
+    </bean>
+    <bean id="stockMgtDAO" class="stockmgmt.stockMgt.dao.StockMgtDAO">
+    	<property name="sqlSessionFactory" ref="sqlSessionTemplate" />
+    </bean>
+    <bean id="stockHistoryDao" class="stockmgmt.stockhistory.dao.StockHistoryDAO">
+    	<property name="sqlSessionFactory" ref="sqlSessionTemplate" />
+    </bean>
+</beans>

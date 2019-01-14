@@ -25,12 +25,14 @@
 			 type: "POST",
 		     url: options.url,
 		     dataType: "json",
-		     data: options.data,
+		     data: JSON.stringify(options.data),
+		     contentType: "application/json",
+//		     traditional: true,
 		     success: function(response) {
 		    	 options.callback(response);
 		     }, 
 		     error: function(request, error, errormessage) {
-		    	 alert("error : ",errormessage);
+		    	 alert("error : " + error);
 		     } 
 		});
 	};
@@ -45,6 +47,7 @@
         var winTop = (screen.height - height) / 2;
         var status = 'height='+height+',width='+width+',top='+winTop+',left='+winLeft+',scrollbars='+options.scrollbars+',resizable=' + options.resizable;
         var win = window.open("", target, status);
+        
         $.post(
                 url,
                 $.param(param, true),

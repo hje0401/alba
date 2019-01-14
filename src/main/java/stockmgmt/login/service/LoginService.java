@@ -12,11 +12,11 @@ public class LoginService implements ILoginService{
 	@Autowired
 	private ILoginDAO loginDao;
 	
-	public int reqUserInfoCnt(LoginVO loginVO) {
+	public int reqUserInfoCnt(LoginVO loginVO){
 		return loginDao.reqUserInfoCnt(loginVO);
 	}
 	
-	public LoginVO reqLogin(LoginVO loginVO) {
+	public LoginVO reqLogin(LoginVO loginVO){
 		return loginDao.reqLogin(loginVO);
 	}
 }

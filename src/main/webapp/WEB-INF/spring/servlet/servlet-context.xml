@@ -9,8 +9,8 @@
        http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd
        http://www.springframework.org/schema/tx
         http://www.springframework.org/schema/tx/spring-tx-3.0.xsd">
- 
-    <context:component-scan base-package="stockmgmt.*"></context:component-scan>
+ 	 	
+    <context:component-scan base-package="stockmgmt.*" />
     <mvc:annotation-driven/>
     
     <mvc:interceptors>
@@ -34,7 +34,7 @@
     <bean class="org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping"/>
      
     <bean class="org.springframework.web.servlet.view.BeanNameViewResolver" p:order="0" />
-    <bean id="jsonView" class="org.springframework.web.servlet.view.json.MappingJacksonJsonView" />   
+    <bean id="jsonView" class="org.springframework.web.servlet.view.json.MappingJackson2JsonView" />   
      
     <bean
         class="org.springframework.web.servlet.view.UrlBasedViewResolver" p:order="1"
@@ -42,11 +42,4 @@
         p:prefix="/WEB-INF/views/" p:suffix=".jsp">
     </bean>
     
-    
-    <bean id="loginService" class="stockmgmt.login.service.LoginService" />
-    <bean id="loginDao" class="stockmgmt.login.dao.LoginDAO" />
-    <bean id="stockService" class="stockmgmt.stock.service.StockService" />
-    <bean id="stockDao" class="stockmgmt.stock.dao.StockDAO" />
-    <bean id="stockMgtService" class="stockmgmt.stockMgt.service.StockMgtService" />
-    <bean id="stockMgtDAO" class="stockmgmt.stockMgt.dao.StockMgtDAO" />
 </beans>
