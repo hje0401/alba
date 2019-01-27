@@ -16,8 +16,7 @@ $(document).ready(function(){
 	
 	//검색버튼
 	$("#btnSearch").on("click",function(){
-		pageNo = 1;
-		reqStockList();
+		refrash();
 	});
 	
 	//재고 리스트 더블클릭 이벤트
@@ -54,6 +53,12 @@ var $prodModyBoxT = undefined;
 var pageNo = 1;
 var totalPaging = 1;
 
+/**
+ * 새로고침 
+ */
+refrash = function(){
+	location.reload();
+};
 /**
  * 재고 목록 조회
  */

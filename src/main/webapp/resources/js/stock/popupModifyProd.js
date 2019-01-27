@@ -74,31 +74,18 @@ $(document).ready(function(){
 
 reqProdCntModify = function(prodList){
 	param = {"historyList" : prodList};
-	debugger;
 	var option = {
 			"url" : "reqProdCntModify.do",
 			"data" : param,
 			"contentType" : "application/json",
-//			"data" : JSON.stringify(param),
 			"callback" : function(res){
-				alert("성공!!!" + JSON.stringify(res));
+				if(util.checkResponseError(res)){
+					alert("등록 되었습니다.");
+					opener.refrash();
+					window.close();
+				}
 			}
 	}
-	
-//	$.ajax({
-//		 method: "POST",
-//	     url: "reqProdCntModify.do",
-//	     data: JSON.stringify(param),
-//	     datatype: "json",
-//	     contentType: "application/json",
-//	     traditional: true,
-//	     success: function(response) {
-//	    	 options.callback(response);
-//	     }, 
-//	     error: function(request, error, errormessage) {
-//	    	 alert("error : ",errormessage);
-//	     } 
-//	});
 	
 	util.requestToServer(option);
 };

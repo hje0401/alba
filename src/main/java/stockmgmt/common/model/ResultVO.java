@@ -25,6 +25,12 @@ public class ResultVO<T> {
         this.result = result;
         this.errorCode = errorCode;
     }
+    
+    public ResultVO(Boolean result, String errorCode , String errorMessage) {
+    	this.result = result;
+    	this.errorCode = errorCode;
+    	this.errorMessage = errorMessage;
+    }
 
     public Boolean getResult() {
         return result;

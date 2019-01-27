@@ -14,50 +14,57 @@
 		http://www.springframework.org/schema/aop/spring-aop.xsd">
         
         
-        
     <bean id="stockDataSource" class="org.springframework.jndi.JndiObjectFactoryBean">
       <property name="jndiName" value="jdbc/stockMgmt"/>
       <property name="resourceRef"  value="true" />
     </bean>
-    
-<!--     <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager"> -->
-<!-- 		<property name="dataSource" ref=stockDataSource></property> -->
-<!-- 	</bean> -->
-	
-<!-- 	<tx:annotation-driven/> -->
 	
    <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
       <property name="dataSource" ref="stockDataSource"/>
     </bean>
     
-    <aop:config proxy-target-class="true">
-	    <aop:pointcut id="serviceOperation" expression="execution(public * stockmgmt.stockhistory.service.*Service.*(..))" />
-	    <aop:advisor id="transactionAdvisor" pointcut-ref="serviceOperation" advice-ref="txAdvice"/>
-	</aop:config>
+<!--     <aop:config proxy-target-class="true"> -->
+<!-- 	    <aop:pointcut id="serviceOperation" expression="execution(public * stockmgmt.stockhistory.service.*Service.*(..))" /> -->
+<!-- 	    <aop:advisor id="transactionAdvisor" pointcut-ref="serviceOperation" advice-ref="txAdvice"/> -->
+<!-- 	</aop:config> -->
 	
-    <tx:advice id="txAdvice" transaction-manager="transactionManager">
+<!--     <tx:advice id="txAdvice" transaction-manager="transactionManager"> -->
+<!--         <tx:attributes> -->
+<!--             <tx:method name="select*" read-only="true" /> -->
+<!--             <tx:method name="list*" read-only="true" /> -->
+<!--             <tx:method name="retrieve*" read-only="true" /> -->
+<!--             <tx:method name="get*" read-only="true" /> -->
+<!--             <tx:method name="find*" read-only="true" /> -->
+<!--             <tx:method name="view*" read-only="true" /> -->
+<!--             <tx:method name="*Move" read-only="true" /> -->
+<!--             <tx:method name="insert*" propagation="REQUIRED" /> -->
+<!--             <tx:method name="update*" propagation="REQUIRED" /> -->
+<!--             <tx:method name="delete*" propagation="REQUIRED"/> -->
+<!--             <tx:method name="save*" propagation="REQUIRED"/> -->
+<!--             <tx:method name="create*" propagation="REQUIRED"/> -->
+<!--             <tx:method name="merge*" propagation="REQUIRED"/> -->
+<!--             <tx:method name="execute*" propagation="REQUIRED"/> -->
+<!--             <tx:method name="excel*" propagation="REQUIRED"/> -->
+<!--             <tx:method name="CALL" propagation="REQUIRED"/> -->
+<!--             <tx:method name="*" rollback-for="Exception"/> -->
+<!--         </tx:attributes> -->
+<!--     </tx:advice> -->
+    
+    <tx:advice id="adminAdvice" transaction-manager="transactionManager">
         <tx:attributes>
-            <tx:method name="select*" read-only="true" />
-            <tx:method name="list*" read-only="true" />
-            <tx:method name="retrieve*" read-only="true" />
-            <tx:method name="get*" read-only="true" />
-            <tx:method name="find*" read-only="true" />
-            <tx:method name="view*" read-only="true" />
-            <tx:method name="*Move" read-only="true" />
-            <tx:method name="insert*" propagation="REQUIRED" />
-            <tx:method name="update*" propagation="REQUIRED" />
-            <tx:method name="delete*" propagation="REQUIRED"/>
-            <tx:method name="save*" propagation="REQUIRED"/>
-            <tx:method name="create*" propagation="REQUIRED"/>
-            <tx:method name="merge*" propagation="REQUIRED"/>
-            <tx:method name="execute*" propagation="REQUIRED"/>
-            <tx:method name="excel*" propagation="REQUIRED"/>
-            <tx:method name="CALL" propagation="REQUIRED"/>
-            <tx:method name="*" rollback-for="Exception"/>
+            <tx:method name="insert*"/>
+            <tx:method name="update*"/>
+            <tx:method name="delete*"/>
+            <tx:method name="req*"/>
+            <tx:method name="*" read-only="true"/>
         </tx:attributes>
     </tx:advice>
     
-    <tx:annotation-driven transaction-manager="transactionManager" proxy-target-class="true"/>
+    <aop:config>
+        <aop:advisor pointcut="execution(* *..service.I*.*(..))" advice-ref="adminAdvice" />
+    </aop:config>
+    
+    <tx:annotation-driven transaction-manager="transactionManager"/>
     
 
     <bean id="sqlSessionTemplate" class="org.mybatis.spring.SqlSessionFactoryBean">

@@ -25,10 +25,10 @@ public class StockHistoryController {
 	
 	@RequestMapping(value="/reqProdCntModify.do", method = RequestMethod.POST)
 	@ResponseBody
-	public void reqProdCntModif(@RequestBody StockHistoryListVO historyList){
+	public ResultVO reqProdCntModif(@RequestBody StockHistoryListVO historyList){
 		List<StockHistoryVO> list = historyList.getHistoryList();
 		ResultVO resultVo = stockHistoryService.reqProdCntModif(list);
-		
+		return resultVo;
 //		for (StockHistoryVO stockHistoryVO : list) {
 //			log.debug(stockHistoryVO.toString());
 //		}

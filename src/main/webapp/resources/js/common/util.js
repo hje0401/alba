@@ -12,8 +12,8 @@
 			alert("요청처리에 실패하였습니다.");
 			return false;
 		}
-		if(!res.resultCode){
-			alert("요청처리에 실패하였습니다. [" + res.value + "]" );
+		if(!res.result){
+			alert(res.errorMessage + "[" + res.errorCode + "]" );
 			return false;
 		}
 		

@@ -40,11 +40,11 @@
 	            </label>
 	            <label>
 	            	<span>날짜</span>
-	            	<input class="form-control" placeholder="조회 시작일(YYYYMMDD)">
+	            	<input type="number" maxlength="8" class="form-control" placeholder="조회 시작일(YYYYMMDD)">
 	            </label>
 	            <label>
 	            	<span>~</span>
-	            	<input class="form-control" placeholder="조회 마지막일(YYYYMMDD)">
+	            	<input type="number" maxlength="8" class="form-control" placeholder="조회 마지막일(YYYYMMDD)">
 	            </label>
 	            <label>
 	            	<span>분류</span>
@@ -62,7 +62,7 @@
                         <div class="panel-heading">입/출고 현황</div>
                         <!-- /.panel-heading -->
                         <div class="panel-body">
-                            <table width="100%" class="table table-striped table-bordered table-hover" id="dataTables-example">
+                            <table width="100%" class="table table-striped table-bordered table-hover" id="stockInOutHistory">
                                 <thead>
                                     <tr>
                                         <th>No</th>
@@ -75,23 +75,17 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                        <td>1</td>
-                                        <td>CCTV1</td>
-                                        <td>3</td>
-                                        <td>홍길동</td>
-                                        <td>2</td>
-                                        <td>출고</td>
-                                        <td>2018-11-21</td>
-                                    </tr>
-                                    <tr>
-                                        <td>1</td>
-                                        <td>CCTV1</td>
-                                        <td>3</td>
-                                        <td>홍길동</td>
-                                        <td>2</td>
-                                        <td>출고</td>
-                                        <td>2018-11-21</td>
+                                	<tr id="noData" class="hide">
+                                		<td colspan="7">등록된 제품이 없습니다.</td>
+                                	</tr>
+                                    <tr class="record">
+                                        <td class="no"></td>
+                                        <td class="prodName"></td>
+                                        <td class="prodCnt"></td>
+                                        <td class="regId"></td>
+                                        <td class="inoutCnt"></td>
+                                        <td class="gubun"></td>
+                                        <td class="regDate"></td>
                                     </tr>
                                 </tbody>
                             </table>
