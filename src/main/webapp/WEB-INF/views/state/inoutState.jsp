@@ -32,29 +32,29 @@
             <div class="form-group">
 	            <label>
 	            	<span>제품명</span>
-	            	<input class="form-control" placeholder="제품명을 입력하세요.">
+	            	<input class="form-control" id="prodName" placeholder="제품명을 입력하세요.">
 	            </label>
 	            <label>
 	            	<span>직원명</span>
-	            	<input class="form-control" placeholder="입/출고자명을 입력하세요.">
+	            	<input class="form-control" id="memberNm" placeholder="입/출고자명을 입력하세요.">
 	            </label>
 	            <label>
 	            	<span>날짜</span>
-	            	<input type="number" maxlength="8" class="form-control" placeholder="조회 시작일(YYYYMMDD)">
+	            	<input type="number" maxlength="8" id="stdDate" class="form-control" placeholder="조회 시작일(YYYYMMDD)">
 	            </label>
 	            <label>
 	            	<span>~</span>
-	            	<input type="number" maxlength="8" class="form-control" placeholder="조회 마지막일(YYYYMMDD)">
+	            	<input type="number" maxlength="8" id="endDate" class="form-control" placeholder="조회 마지막일(YYYYMMDD)">
 	            </label>
 	            <label>
 	            	<span>분류</span>
-	            	<select class="form-control">
+	            	<select class="form-control" id="prodCategory">
                         <option>CCTV</option>
                     </select>
 	            </label>
 	        </div>
             <div class="btnArea">
-	            <button type="button" class="btn btn-primary btnSearch">검색</button>
+	            <button type="button" class="btn btn-primary btnSearch" id="btnSearch">검색</button>
             </div>
             <div class="row">
                 <div class="col-lg-12">
@@ -67,24 +67,26 @@
                                     <tr>
                                         <th>No</th>
                                         <th>제품명</th>
-                                        <th>재고량</th>
                                         <th>입/출고자</th>
                                         <th>수량</th>
                                         <th>구분</th>
+                                        <th>출고사유</th>
+                                        <th>비고</th>
                                         <th>날짜</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                 	<tr id="noData" class="hide">
-                                		<td colspan="7">등록된 제품이 없습니다.</td>
+                                		<td colspan="8">등록된 제품이 없습니다.</td>
                                 	</tr>
                                     <tr class="record">
                                         <td class="no"></td>
                                         <td class="prodName"></td>
-                                        <td class="prodCnt"></td>
-                                        <td class="regId"></td>
+                                        <td class="userNm"></td>
                                         <td class="inoutCnt"></td>
                                         <td class="gubun"></td>
+                                        <td class="stockMemo"></td>
+                                        <td class="stockEtc"></td>
                                         <td class="regDate"></td>
                                     </tr>
                                 </tbody>
@@ -92,14 +94,9 @@
                             <!-- /.table-responsive -->
                             <div class="row">
                             	<div class="col-sm-6">
-                            		<div class="dataTables_paginate paging_simple_numbers" id="dataTables-example_paginate">
+                            		<div class="dataTables_paginate paging_simple_numbers" id="dataTables_paginate">
                             			<ul class="pagination">
                             				<li class="paginate_button previous" id="dataTables-example_previous"><span>Previous</span></li>
-                            				<li class="paginate_button active"><span>1</span></li>
-                            				<li class="paginate_button"><span>2</span></li>
-                            				<li class="paginate_button"><span>3</span></li>
-                            				<li class="paginate_button"><span>4</span></li>
-                            				<li class="paginate_button"><span>5</span></li>
                             				<li class="paginate_button next" id="dataTables-example_next"><span>Next</span></li>
                             			</ul>
                             		</div>

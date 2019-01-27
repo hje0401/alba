@@ -8,6 +8,7 @@
     <bean id="stockService" class="stockmgmt.stock.service.StockService" />
     <bean id="stockMgtService" class="stockmgmt.stockMgt.service.StockMgtService" />
     <bean id="stockHistoryService" class="stockmgmt.stockhistory.service.StockHistoryService" />
+    <bean id="inoutStateService" class="stockmgmt.inoutstate.service.InoutStateService" />
     
 		
 </beans>

@@ -5,6 +5,9 @@ public class SearchVO {
 	private String prodCategory;
 	private String searchDate;
 	private String pageNo;
+	private String stdDate;
+	private String endDate;
+	private String memberNm;
 	
 	public String getProdName() {
 		return prodName;
@@ -29,5 +32,23 @@ public class SearchVO {
 	}
 	public void setPageNo(String pageNo) {
 		this.pageNo = pageNo;
+	}
+	public String getStdDate() {
+		return stdDate;
+	}
+	public void setStdDate(String stdDate) {
+		this.stdDate = stdDate;
+	}
+	public String getEndDate() {
+		return endDate;
+	}
+	public void setEndDate(String endDate) {
+		this.endDate = endDate;
+	}
+	public String getMemberNm() {
+		return memberNm;
+	}
+	public void setMemberNm(String memberNm) {
+		this.memberNm = memberNm;
 	}
 }

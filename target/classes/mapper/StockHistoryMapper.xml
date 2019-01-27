@@ -36,7 +36,7 @@
 			,#{inoutCnt}
 			,#{gubun}
 			,now()
-			,'jekim'
+			,#{regId}
 			,#{stockMemo}
 			,#{stockEtc}
 		)

@@ -85,4 +85,7 @@
     <bean id="stockHistoryDao" class="stockmgmt.stockhistory.dao.StockHistoryDAO">
     	<property name="sqlSessionFactory" ref="sqlSessionTemplate" />
     </bean>
+    <bean id="inoutStateDao" class="stockmgmt.inoutstate.dao.InoutStateDAO">
+    	<property name="sqlSessionFactory" ref="sqlSessionTemplate" />
+    </bean>
 </beans>

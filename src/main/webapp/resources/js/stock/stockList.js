@@ -10,13 +10,14 @@ $(document).ready(function(){
 	$("#prodName , #searchDate").on("keypress",function(e){
 		if (e.keyCode == 13) {
 			pageNo = 1;
-			reqStockList();
+			reqList();
 		}
 	});
 	
 	//검색버튼
 	$("#btnSearch").on("click",function(){
-		refrash();
+		pageNo = 1;
+		reqList();
 	});
 	
 	//재고 리스트 더블클릭 이벤트
@@ -44,7 +45,7 @@ $(document).ready(function(){
 	});
 	
 	//재고 리스트 조회
-	reqStockList();
+	reqList();
 	
 });
 
@@ -62,7 +63,7 @@ refrash = function(){
 /**
  * 재고 목록 조회
  */
-reqStockList = function(){
+reqList = function(){
 	var data = {
 			"prodName" : $("#prodName").val(),
 			"prodCategory" : $("#prodCategory option:selected").attr("value"),

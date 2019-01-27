@@ -10,7 +10,7 @@
         WHERE
         	1=1
         	AND userId = #{userId}
-        	AND userPwd = #{userPw}
+        	AND userPwd = PASSWORD(#{userPw})
     </select>
     
 	<select id="reqLogin" parameterType="LoginVO" resultType="LoginVO">
@@ -23,7 +23,7 @@
         WHERE
         	1=1
         	AND userId = #{userId}
-        	AND userPwd = #{userPw}
+        	AND userPwd = PASSWORD(#{userPw})
     </select>
     
 </mapper>

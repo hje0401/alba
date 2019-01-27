@@ -13,6 +13,7 @@
         <typeAlias type="stockmgmt.stockMgt.model.StockMgtVO" alias="StockMgtVO" />
         <typeAlias type="stockmgmt.common.model.SearchVO" alias="SearchVO" />
         <typeAlias type="stockmgmt.stockhistory.model.StockHistoryVO" alias="StockHistoryVO" />
+        <typeAlias type="stockmgmt.inoutstate.model.InoutStateVO" alias="InoutStateVO" />
         
         
     </typeAliases>

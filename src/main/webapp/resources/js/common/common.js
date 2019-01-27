@@ -14,7 +14,6 @@
 			location.href = "logout.do";
 		});
 		
-		
 		/**
 		 * 페이징
 		 */
