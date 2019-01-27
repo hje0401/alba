@@ -3,10 +3,20 @@
 
 <mapper namespace="StockHistory">
 	
-	<update id="reqProdCntModif" parameterType="StockHistoryVO">
+	<update id="reqProdCntModifIn" parameterType="StockHistoryVO">
 		<![CDATA[
 			UPDATE stock
 			SET stockCnt = stockCnt + #{inoutCnt}
+				,uptDate = now()
+			WHERE prodCode = #{prodCode}
+		]]>
+	</update>
+	
+	<update id="reqProdCntModifOut" parameterType="StockHistoryVO">
+		<![CDATA[
+			UPDATE stock
+			SET stockCnt = stockCnt - #{inoutCnt}
+				,uptDate = now()
 			WHERE prodCode = #{prodCode}
 		]]>
 	</update>
